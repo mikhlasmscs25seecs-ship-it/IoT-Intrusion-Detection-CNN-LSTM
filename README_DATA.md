@@ -4,7 +4,7 @@ This document provides instructions on organizing the training and testing data 
 
 ## Dataset
 
-Download the "CIC IoMT dataset 2024" dataset in CSV format from [here](https://www.unb.ca/cic/datasets/iomt-dataset-2024.html).
+Download the "CIC IoMT dataset 2024" dataset in CSV format from [here](https://github.com/mikhlasmscs25seecs-ship-it/IoT-Intrusion-Detection-CNN-LSTM)).
 
 After downloading, extract and place the CSV files in the appropriate directories (`data/train/` and `data/test/`) as detailed below.
 
