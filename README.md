@@ -1,186 +1,129 @@
-# Securing Healthcare with Deep Learning: A CNN-Based Model for medical IoT Threat Detection
+# IoT Intrusion Detection using CNN-LSTM
 
-<div align="center">
+## 📌 Overview
+This project presents an improved intrusion detection system for IoT networks using deep learning. The proposed model enhances a baseline CNN approach by integrating LSTM layers, enabling the system to capture both spatial and temporal features of network traffic.
 
-[![IEEE Conference](https://img.shields.io/badge/IEEE-ICIS%202024-blue.svg)](https://doi.org/10.1109/ICIS64839.2024.10887510)
-[![arXiv](https://img.shields.io/badge/arXiv-2410.23306-b31b1b.svg)](https://arxiv.org/abs/2410.23306)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
-[![Presentation](https://img.shields.io/badge/YouTube-Presentation-red.svg)](https://youtu.be/hPV5H9kTbYM?si=fWtb_eaIiLQ3uGEy)
-
-*Official Implementation - Presented at the 19th Iranian Conference on Intelligent Systems (ICIS 2024)* **IEEE Indexed**
-</div>
-
+The system is designed to detect multiple types of cyber-attacks in IoT environments, improving both accuracy and real-world applicability.
 
 ---
 
-## Overview
-This repository provides the implementation of our CNN-based intrusion detection model for Internet of Medical Things (IoMT) systems. The model performs multi-class classification on network traffic, distinguishing 19 attack types as well as benign traffic using the CICIoMT2024 dataset. All source code corresponds to the work presented in our paper. If you use or reference this repository, please **cite** [our paper](#-citation). This work has received **15+ citations** and **20+ GitHub stars**.
+## 🚀 Key Improvements
+Compared to the baseline model, the following improvements were implemented:
 
-**Key Features:**
-- Multi-classification support: Binary (2-class), Categorical (6-class), and Multiclass (19-class)
-- Perfect accuracy of 0.99 across all classification tasks
-- Outperforms previous state-of-the-art methods
----
-
-## Performance Metrics
-
-<div align="center">
-
-![Model Comparison](https://github.com/user-attachments/assets/7dc2bd46-c2ea-49cb-b94f-7ee42b268d56)
-
-*Performance comparison across different classification tasks*
-
-</div>
+- ✅ Dataset integration (multiple CSV files combined)
+- ✅ Multi-class classification (Benign, DDoS, DoS, Recon)
+- ✅ CNN-LSTM hybrid model (spatial + temporal learning)
+- ✅ Data preprocessing and normalization
+- ✅ Real-time prediction simulation
 
 ---
 
-## Model Architecture
+## 🧠 Model Architecture
+The model consists of:
 
-<div align="center">
-
-![CNN Architecture](https://github.com/user-attachments/assets/e76e8cb4-a185-4726-abcb-b50482786088)
-
-*Architecture of the CNN model for IoMT attack classification*
-
-</div>
+- 1D Convolutional layers (feature extraction)
+- MaxPooling layers
+- LSTM layer (temporal dependency learning)
+- Fully connected (Dense) layers
+- Softmax output layer
 
 ---
 
-## 🚀 Quick Start
+## 📊 Results
+The proposed model achieved:
 
-### Step 1: Clone Repository
-```bash
-git clone https://github.com/alirezamohamadiam/Securing-Healthcare-with-Deep-Learning-A-CNN-Based-Model-for-medical-IoT-Threat-Detection.git
-```
-> Make sure Git is installed on your machine. If not, grab it from: https://git-scm.com/install
+- **Accuracy:** ~97%
+- **Precision:** ~97%
+- **Recall:** ~97%
+- **F1-Score:** ~96%
 
-### Step 2: Install Requirements
-Navigate to Project Directory
-```bash
-cd Securing-Healthcare-with-Deep-Learning-A-CNN-Based-Model-for-medical-IoT-Threat-Detection
-```
-then:
-```bash
-pip install -r requirements.txt
-```
-> **Note:** Python 3.7+ is required
+### Key Observations:
+- Excellent performance on **DDoS** and **DoS** attacks
+- Slightly lower performance on **Recon** class (due to similarity with normal traffic)
 
-### Step 3: Download Dataset
-Download the **CIC IoMT Dataset 2024** from:  
-🔗 [https://www.unb.ca/cic/datasets/iomt-dataset-2024.html](https://www.unb.ca/cic/datasets/iomt-dataset-2024.html)
+---
 
-### Step 4: Prepare Data
-Place the CSV files in the data directories:
-```
-data/
-├── train/     ← Put training CSV files here
-└── test/      ← Put testing CSV files here
-```
-> **Detailed instructions:** See [`README_DATA.md`](https://github.com/alirezamohamadiam/Securing-Healthcare-with-Deep-Learning-A-CNN-Based-Model-for-medical-IoT-Threat-Detection/blob/main/README_DATA.md)
+## 📈 Visualizations
+The project includes:
 
-### Step 5: Run Training
-Navigate to the `src` directory:
-```bash
-cd src
-```
-To run the model, execute `main.py` and specify the classification configuration:
-```bash
-python main.py --class_config <num_classes>
-```
+- Accuracy comparison (CNN vs CNN-LSTM)
+- Confusion Matrix
+- Training & Validation Accuracy Graph
 
-Replace `<num_classes>` with:
-- **2** for binary classification,
-- **6** for categorical,
-- **19** for multiclass.
-
-**Example (binary classification):**
-```bash
-python main.py --class_config 2
-```
 ---
 
 ## 📂 Project Structure
-
-```
-project/
-├── data/
-│   ├── train/            # Training CSV files (see README_DATA.md)
-│   └── test/             # Testing CSV files (see README_DATA.md)
 ├── src/
-│   ├── data_loader.py    # Data loading and preprocessing
-│   ├── model.py          # CNN model definition and training
-│   └── main.py           # Main execution script
-├── requirements.txt      # Project dependencies
-├── README.md             # Project documentation (this file)
-└── README_DATA.md        # Data preparation guide
-```
+│ ├── main.py
+│ ├── model.py
+│ ├── data_loader.py
+│ ├── combine.py
+│
+├── requirements.txt
+├── README.md
+├── .gitignore
+
+
 ---
 
-## 📚 Citation
+## 📥 Dataset
 
-If you use this code or find our work helpful, please cite our paper:
-```bibtex
-@inproceedings{mohammadi2024securing,
-  title={Securing Healthcare with Deep Learning: A CNN-Based Model for medical IoT Threat Detection},
-  author={Mohammadi, Alireza and Ghahramani, Hosna and Asghari, Seyyed Amir and Aminian, Mehdi},
-  booktitle={2024 19th Iranian Conference on Intelligent Systems (ICIS)},
-  pages={168--173},
-  year={2024},
-  organization={IEEE}
-}
-```
-**Plain Text Citation (APA style):**
-```
-Mohammadi, A., Ghahramani, H., Asghari, S. A., & Aminian, M. (2024, October). Securing Healthcare with Deep Learning: A CNN-Based Model for medical IoT Threat Detection. In 2024 19th Iranian Conference on Intelligent Systems (ICIS) (pp. 168-173). IEEE.
-```
+Due to size limitations, the dataset is not included in this repository.
 
-**Links:**
-The open-access PDF version of the paper is available on arXiv. You can read the full article there for free. 
+📎 Download it from:
+👉 **[Paste Your Google Drive Link Here]**
 
-* 📄 **IEEE Xplore (official version, not open access):**
-  [https://doi.org/10.1109/ICIS64839.2024.10887510](https://doi.org/10.1109/ICIS64839.2024.10887510)
+After downloading:
+1. Extract the ZIP file
+2. Place the `data/` folder in the project root directory
+project-folder/
+│
+├── data/
+├── src/
 
-* 📄 **arXiv (PDF and open-access version):**
-  [https://arxiv.org/abs/2410.23306](https://arxiv.org/abs/2410.23306)
+
 ---
 
-<div align="center">
+## ⚙️ Installation
 
-**⭐ If you find this work useful, please consider giving it a star! ⭐**
+Install required dependencies:
 
-Made with ❤️ by Alireza Mohamadi
-
-</div>
-
+```bash
+pip install -r requirements.txt
 
 
+Class Config Options:
+2 → Binary classification
+6 → Multi-class (recommended)
+19 → Fine-grained classification
 
 
+🧪 Technologies Used
+Python
+TensorFlow / Keras
+Scikit-learn
+Pandas / NumPy
+📄 Research Contribution
 
+This work is based on and improves upon:
 
+"Securing Healthcare with Deep Learning: A CNN-Based Model for Medical IoT Threat Detection"
+📍 19th Iranian Conference on Intelligent Systems (ICIS), 2024, pp. 168–173
 
+Enhancements include:
 
+Addition of LSTM layer
+Multi-class classification
+Improved preprocessing pipeline
+🔮 Future Work
+Improve detection of minority classes (e.g., Recon)
+Apply class balancing techniques (SMOTE)
+Explore attention mechanisms and transformers
+Real-time deployment in live network environments
+Advanced hyperparameter tuning
+👥 Authors
+Mohammad Tariq Ikhlas
+Pohanyar Khowaja Khil
+Malak Muhammad Mueed
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SEECS, NUST, Pakistan
